@@ -10,8 +10,8 @@ function setKey(key) {
 async function generateKey() {
   const keyProps = {name: "AES-CBC", length: 128};
   const key = await window.crypto.subtle.generateKe(keyProps, true, ["encrypt", "decrypt"]);
-  const keyBuffer = await window.crypto.subtle.exportKey("raw", key)
-  setKey(new Uint8Array(keyBuffer))
+  const keyBuffer = await window.crypto.subtle.exportKey("raw", key);
+  setKey(new Uint8Array(keyBuffer));
 }
 
 function getSalt() {
@@ -25,7 +25,7 @@ function setSalt(salt) {
 
 function generateSalt() {
   const salt = window.crypto.getRandomValues(new Uint8Array(16));
-  setSalt(salt)
+  setSalt(salt);
 }
 
 function getText() {
@@ -47,5 +47,5 @@ async function encrypt() {
   const key = getKey();
   const text = getText();
   const encrypted = await window.crypto.subtle.encrypt(encryptProps, key, text);
-  setEncrypted(encrypted)
+  setEncrypted(encrypted);
 }
