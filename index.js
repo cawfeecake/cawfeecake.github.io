@@ -6,7 +6,7 @@ function setKey(key) {
   const keyElem = document.getElementById("key");
   keyElem._key = key;
   const decoder = new TextDecoder("utf-8");
-  keyElem.value = decoder.decode(key));
+  keyElem.value = decoder.decode(key);
 }
 
 async function generateKey() {
@@ -24,7 +24,7 @@ function setSalt(salt) {
   const saltElem = document.getElementById("salt");
   saltElem._salt = salt;
   const decoder = new TextDecoder("utf-8");
-  saltElem.value = decoder.decode(salt));
+  saltElem.value = decoder.decode(salt);
 }
 
 function generateSalt() {
