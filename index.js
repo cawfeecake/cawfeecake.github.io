@@ -1,10 +1,12 @@
 function getKey() {
-  const input = document.getElementById("key");
-  return input.value;
+  return document.getElementById("key");
 }
 
 function setKey(key) {
-  document.getElementById("key").value = key;
+  const keyElem = document.getElementById("key");
+  keyElem._key = key;
+  const decoder = new TextDecoder("utf-8");
+  keyElem.value = decoder.decode(key));
 }
 
 async function generateKey() {
@@ -15,12 +17,14 @@ async function generateKey() {
 }
 
 function getSalt() {
-  const input = document.getElementById("salt");
-  return input.value;
+  return document.getElementById("salt");
 }
 
 function setSalt(salt) {
-  document.getElementById("salt").value = salt;
+  const saltElem = document.getElementById("salt");
+  saltElem._salt = salt;
+  const decoder = new TextDecoder("utf-8");
+  saltElem.value = decoder.decode(salt));
 }
 
 function generateSalt() {
@@ -41,10 +45,10 @@ function setEncrypted(encrypted) {
 }
 
 async function encrypt() {
-  const salt = getSalt();
+  const salt = getSalt()._salt;
   const encryptProps = {name: "AES-CBC", iv: salt};
   
-  const key = getKey();
+  const key = getKey()._key;
   const text = getText();
   const encrypted = await window.crypto.subtle.encrypt(encryptProps, key, text);
   setEncrypted(encrypted);
