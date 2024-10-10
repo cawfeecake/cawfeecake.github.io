@@ -9,7 +9,7 @@ function setKey(key) {
 
 async function generateKey() {
   const keyProps = {name: "AES-CBC", length: 128};
-  const key = await window.crypto.subtle.generateKe(keyProps, true, ["encrypt", "decrypt"]);
+  const key = await window.crypto.subtle.generateKey(keyProps, true, ["encrypt", "decrypt"]);
   const keyBuffer = await window.crypto.subtle.exportKey("raw", key);
   setKey(new Uint8Array(keyBuffer));
 }
